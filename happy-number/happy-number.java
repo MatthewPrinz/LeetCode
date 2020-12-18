@@ -4,10 +4,6 @@ class Solution {
         while (true)
         {
             List<Integer> digits = getDigits(n);
-            for (Integer ele : digits)
-            {
-                System.out.println(ele);
-            }
             int sum = 0;
             for (Integer ele : digits)
             {
@@ -27,11 +23,6 @@ class Solution {
         if (n == 0)
         {
             result.add(0);
-            return result;
-        }
-        if (n == 1)
-        {
-            result.add(1);
             return result;
         }
         while (n >= 1)
