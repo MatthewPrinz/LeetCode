@@ -17,12 +17,11 @@ class Solution {
                 endPos--;
                 continue;
             }
-            System.out.println("begin: " + sl.charAt(beginPos) + " end: " + sl.charAt(endPos));
             if (sl.charAt(beginPos) != sl.charAt(endPos))
                 return false;
             beginPos++;
             endPos--;
         }
     return true;
-    }
+    }
 }
