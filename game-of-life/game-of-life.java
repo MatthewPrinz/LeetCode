@@ -39,3 +39,27 @@ class Solution {
     public int liveNeighbors(int[][] board, int row, int col)
     {
         int numAlive = 0;
+        // left, right, down, up
+        if ((row-1) >= 0)
+            numAlive += board[row-1][col];
+        if ((row+1) < board.length)
+            numAlive += board[row+1][col];
+        if ((col+1) < board[0].length)
+            numAlive += board[row][col+1];
+        if ((col-1) >= 0)
+            numAlive += board[row][col-1];
+        // down right
+        if (((row+1) < board.length) && ((col+1) < board[0].length))
+            numAlive += board[row+1][col+1];
+        // up right
+        if (((col-1) >= 0) && ((row+1) < board.length))
+            numAlive += board[row+1][col-1];
+        // down left
+        if (((col+1) < board[0].length) && ((row-1) >= 0))
+            numAlive += board[row-1][col+1];
+        // up left
+        if (((col-1) >= 0) && ((row-1) >= 0))
+            numAlive += board[row-1][col-1];
+        return numAlive;
+    }
+}
