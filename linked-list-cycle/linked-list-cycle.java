@@ -13,27 +13,25 @@ public class Solution {
     public boolean hasCycle(ListNode head) {
         if (head == null || head.next == null)
             return false;
-        ListNode fast = head;
-        ListNode slow = head;
-        // Improve clarity
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-            if (fast == slow)
+        // If we can only use one pointer:
+        Map<ListNode, Integer> map = new HashMap<>();
+        while (head != null) {
+            map.put(head, map.getOrDefault(head, 0) + 1);
+            if (map.get(head) >= 2)
                 return true;
+            head = head.next;
         }
         return false;
-        /*
-        while (fast != null && slow != null) {
-            if (fast == slow)
-                return true;
-            if (fast.next != null)
-                fast = fast.next.next;
-            else 
-                return false;
-            slow = slow.next;
-        }
-        return false;
-        */
+        // If we want to do the traditional method:
+        // ListNode fast = head;
+        // ListNode slow = head;
+        // // Improve clarity
+        // while (fast != null && fast.next != null) {
+        //     fast = fast.next.next;
+        //     slow = slow.next;
+        //     if (fast == slow)
+        //         return true;
+        // }
+        // return false;
     }
 }
