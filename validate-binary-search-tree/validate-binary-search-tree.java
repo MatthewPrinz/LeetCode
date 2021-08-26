@@ -15,22 +15,17 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        Set<Boolean> result = new HashSet<>();
-        helper(root, Long.MIN_VALUE, Long.MAX_VALUE, result);
-        return !result.contains(false);
+        return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
     
-    public boolean helper(TreeNode root, Long min, Long max, Set<Boolean> set) {
+    public boolean helper(TreeNode root, Long min, Long max) {
         if (root == null) {
-            set.add(true);
             return true;
         }
         else if (root.val <= min || root.val >= max) {
-            set.add(false);
             return false;
         }
         else 
-            return helper(root.left, new Long(min), new Long(root.val), set) && helper(root.right, new Long(root.val), new Long(max), set);
-        
+            return helper(root.left, new Long(min), new Long(root.val)) && helper(root.right, new Long(root.val), new Long(max));
     }
 }
