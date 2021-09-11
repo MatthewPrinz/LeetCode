@@ -7,26 +7,18 @@ class Solution {
             return 0;
         
         int[][] mat = new int[coins.length][amount+1];
+        // Set up first row (base case)
+        for (int i = 1; i < amount + 1; i++) {
+            mat[0][i] = coins[0] > i ? mat[0][i] = INV : mat[0][i - coins[0]] + 1;
+        }
         
-        for (int row = 0; row < coins.length; row++) {
+        // Create the rest of the matrix
+        for (int row = 1; row < coins.length; row++) {
             for (int change = 1; change < amount+1; change++) {
-                if (row == 0) {
-                    if (coins[row] > change) {
-                        mat[row][change] = INV;
-                    } else {
-                        mat[row][change] = mat[row][change - coins[row]] + 1;
-                    }
-                } else {
-                    if (coins[row] > change) {
-                        mat[row][change] = Math.min(INV, mat[row-1][change]);
-                    } else {
-                        mat[row][change] = Math.min(mat[row-1][change], 
-                                                    1 + 
-                                                    mat[row][change-coins[row]]);
-                    }
+                mat[row][change] = coins[row] > change ? Math.min(INV, mat[row-1][change]) : Math.min(mat[row-1][change], 1 + mat[row][change-coins[row]]);
                 }
             }
-        }
+
         return mat[coins.length-1][amount] >= 1000000000 ? -1 : mat[coins.length-1][amount];
     }
 }
