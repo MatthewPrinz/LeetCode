@@ -13,12 +13,17 @@ public class Solution {
     public ListNode detectCycle(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
-        Map<ListNode, Integer> map = new HashMap<>();
-        while (slow != null) {
-            map.put(slow, map.getOrDefault(slow, 0) + 1);
-            if (map.get(slow) >= 2)
-                return slow;
+        while (fast != null && fast.next != null) {
             slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                slow = head;
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
+            }
         }
         return null;
         
