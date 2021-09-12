@@ -1,12 +1,10 @@
 class Solution {
     public int numIdenticalPairs(int[] nums) {
         int result = 0;
-        Map<Integer, List<Integer>> valueToIndices = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                if (nums[i] == nums[j] && i < j)
-                    result++;
-            }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i : nums) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
+            result += map.get(i) - 1;
         }
         return result;
     }
