@@ -17,7 +17,6 @@ class Solution {
         ListNode evens = new ListNode(0);
         ListNode save = null;
         int i = 0;
-        // 1 2 3 -> 1 3 2 
         while (head != null) {
             if (i % 2 == 1 && head.next != null) {
                 odds.next = head.next;
