@@ -1,5 +1,5 @@
 public class Codec {
-    Map<String, String> map = new HashMap<String, String>();
+    Map<String, String> map = new HashMap<>();
     int current = 0;
     // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
