@@ -12,8 +12,8 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             if (used[i] || i > 0 && nums[i] == nums[i-1] && !used[i-1]) 
                 continue;
-            temp.add(nums[i]);
             used[i] = true;
+            temp.add(nums[i]);
             backtrack(result, nums, temp, used);
             used[i] = false;
             temp.remove(temp.size()-1);
