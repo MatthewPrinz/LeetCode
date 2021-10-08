@@ -13,7 +13,6 @@ class Solution {
         for (int i = 3; i <= n; i++) {
             numSteps[i] = numSteps[i-2] + numSteps[i-1];
         }
-        System.out.println(Arrays.toString(numSteps));
         return numSteps[n];
     }
 }
