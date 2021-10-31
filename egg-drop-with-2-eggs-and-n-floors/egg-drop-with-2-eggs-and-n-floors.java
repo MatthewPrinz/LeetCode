@@ -2,8 +2,8 @@ class Solution {
     public static int NUM_EGGS = 2;
     public int twoEggDrop(int n) {
         int[][] dp = new int[NUM_EGGS+1][n+1];
-        for (int eggs = 1; eggs <= n; eggs++) {
-            dp[1][eggs] = eggs;
+        for (int floor = 1; floor <= n; floor++) {
+            dp[1][floor] = floor;
         }
         for (int eggs = 2; eggs <= NUM_EGGS; eggs++) {
             for (int floor = 1; floor <= n; floor++) {
