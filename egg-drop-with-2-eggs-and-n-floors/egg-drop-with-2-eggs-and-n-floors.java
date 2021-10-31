@@ -2,28 +2,21 @@ class Solution {
     public static int NUM_EGGS = 2;
     public int twoEggDrop(int n) {
         int[][] dp = new int[NUM_EGGS+1][n+1];
-        for (int i = 1; i <= n; i++) {
-            dp[1][i] = i;
+        for (int eggs = 1; eggs <= n; eggs++) {
+            dp[1][eggs] = eggs;
         }
-        for (int i = 2; i <= NUM_EGGS; i++) {
-            for (int j = 1; j <= n; j++) {
+        for (int eggs = 2; eggs <= NUM_EGGS; eggs++) {
+            for (int floor = 1; floor <= n; floor++) {
                 int min = Integer.MAX_VALUE;
-                for (int k = 1; k <= j; k++) {
-                    int candidate = 1 + Math.max(dp[i-1][k-1], dp[i][j-k]);
+                for (int dropFloor = 1; dropFloor <= floor; dropFloor++) {
+                    int candidate = 1 + Math.max(dp[eggs-1][dropFloor-1], dp[eggs][floor-dropFloor]);
                     if (candidate < min) {
                         min = candidate;
                     }
                 }
-                dp[i][j] = min;
+                dp[eggs][floor] = min;
             }
         }
-        printMat(dp);
         return dp[NUM_EGGS][n];
-    }
-    
-    void printMat(int[][] m) {
-        for (int[] r : m) {
-            System.out.println(Arrays.toString(r));
-        }
     }
 }
