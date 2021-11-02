@@ -8,7 +8,6 @@ class Solution {
         String longestPal = null;
         for (int i = 0; i <= s.length(); i++) {
             for (int j = i; j <= s.length(); j++) {
-                // System.out.printf("(j-i) is: %d, s.subString is: %s\n", (j-i), s.substring(i, j));
                 if ((j - i) > maxLen && isPalindrome(s.substring(i, j))) {
                     maxLen = j - i;
                     longestPal = s.substring(i, j);
