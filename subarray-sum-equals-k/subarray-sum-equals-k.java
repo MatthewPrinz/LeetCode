@@ -1,13 +1,14 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        int result = 0;
-        for (int i = 0; i < nums.length; i++) {
-            int sum = 0;
-            for (int j = i; j < nums.length; j++) {
-                sum += nums[j];
-                if (sum == k)
-                    result++;
+        int result = 0, cumulative = 0;
+        Map<Integer, Integer> valueToFrequency = new HashMap<>();
+        valueToFrequency.put(0, 1);
+        for (int n : nums) {
+            cumulative += n;
+            if (valueToFrequency.containsKey(cumulative - k)) {
+                result += valueToFrequency.get(cumulative - k);
             }
+            valueToFrequency.put(cumulative, valueToFrequency.getOrDefault(cumulative, 0) + 1);
         }
         return result;
     }
