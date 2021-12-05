@@ -1,52 +1,47 @@
 class LRUCache {
 
-    private class ListNode {
-        ListNode next;
-        ListNode prev;
+    class Node {
         int val;
         int key;
-
-        public ListNode(int key, int val) {
+        Node next;
+        Node prev;
+        public Node(int key, int val) {
             this.val = val;
             this.key = key;
         }
     }
-    Map<Integer, ListNode> cache = new HashMap<>();
     int capacity;
-    ListNode head = new ListNode(0, 0);
-    ListNode tail = new ListNode(0, 0);
-
+    Node head = new Node(0, 0);
+    Node tail = new Node(0, 0);
+    Map<Integer, Node> cache = new HashMap<>();
+    
     public LRUCache(int capacity) {
         this.capacity = capacity;
         head.next = tail;
         tail.prev = head;
     }
     
-    private void remove(ListNode node) {
-        cache.remove(node.key);
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-    }
-    
-    private void insert(ListNode node) {
+    void insert(Node node) {
         cache.put(node.key, node);
-        ListNode headNext = head.next;
+        Node headNext = head.next;
         head.next = node;
-        node.prev = head;
-        headNext.prev = node;
         node.next = headNext;
+        headNext.prev = node;
+        node.prev = head;
     }
-    
-    
+    void remove(Node node) {
+        cache.remove(node.key);
+        node.next.prev = node.prev;
+        node.prev.next = node.next;
+    }
     
     public int get(int key) {
         if (cache.containsKey(key)) {
-            ListNode node = cache.get(key);
+            Node node = cache.get(key);
             remove(node);
             insert(node);
             return node.val;
-        }
-        else {
+        } else {
             return -1;
         }
     }
@@ -55,10 +50,10 @@ class LRUCache {
         if (cache.containsKey(key)) {
             remove(cache.get(key));
         }
-        if (cache.size() == capacity) {
+        if (capacity == cache.size()) {
             remove(tail.prev);
         }
-        insert(new ListNode(key, value));
+        insert(new Node(key, value));
     }
 }
 
