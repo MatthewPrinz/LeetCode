@@ -14,9 +14,6 @@ class Solution {
             return list2;
         else if (list2 == null)
             return list1;
-        if (list1.val > list2.val) {
-            return mergeTwoLists(list2, list1);
-        }
         ListNode result = new ListNode(0);
         ListNode copy = result;
         while (list1 != null || list2 != null) {
