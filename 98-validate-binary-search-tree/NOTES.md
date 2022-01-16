@@ -1,0 +1,1 @@
+Need `Long` due to node.val being able to be equal to Integer.MAX_VALUE
