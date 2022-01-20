@@ -18,7 +18,6 @@ class Solution {
         if (sb.length() > 0) {
                 wordsToFrequency.put(sb.toString(), wordsToFrequency.getOrDefault(sb.toString(), 0) + 1);
         }
-        System.out.printf("sb: %s, wordsToFreq: %s\n", sb.toString(), wordsToFrequency);
         int max = Integer.MIN_VALUE;
         String mostCommon = "";
         for (Map.Entry<String, Integer> me : wordsToFrequency.entrySet()) {
