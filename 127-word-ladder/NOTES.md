@@ -1,1 +1,5 @@
+We're essentially doing a BFS on a graph G with nodes being the beginWord and the wordList with edges connecting nodes which have 1 character distance.
 ​
+An interesting note is that this can be optimized for large wordLists. The traditional manner would look for words which are 1 character away in the wordList - resulting in an O(size of word list) look up time. For large wordLists, this is can be very expensive. Instead, one can iterate through the lowercase ASCII alphabet and change every character of the word to every other character in the alphabet and check if it is inside the wordList. This results in a O(size of word), as 26 is a constant.
+​
+It is worth nothing that if the words in this problem weren't constricted to lowercase ASCII characters, this methodology could be worse than iterating through the word list (consider every word having UTF-32 characters - you'd have to check 2^32 characters for every letter of the word!).
