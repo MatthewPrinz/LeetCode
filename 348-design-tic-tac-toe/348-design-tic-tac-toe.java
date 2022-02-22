@@ -1,51 +1,44 @@
 class TicTacToe {
-    int[][] board;
+    int[] rows;
+    int[] cols;
+    int diagonal;
+    int antidiagonal;
     int n;
     public TicTacToe(int n) {
-        this.board = new int[n][n];
+        this.rows = new int[n];
+        this.cols = new int[n];
         this.n = n;
     }
     
-    public int move(int row, int col, int player) {
-        board[row][col] = player;
-        return checkWin(player) ? player : 0;
-    }
     
-    private boolean checkWin(int player) {
+    // Precondition assumed: players are either 1 or something else
+    public int move(int row, int col, int player) {
+        int move = player == 1 ? 1 : - 1;
         boolean win = false;
-        
-        // Check horizontal, vertical
-        for (int i = 0; i < n; i++) {
-            int scoreHorizontal = 0;
-            int scoreVertical = 0;
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == player) {
-                    scoreHorizontal++;
-                }
-                if (board[j][i] == player) {
-                    scoreVertical++;
-                }
-            }
-            if (scoreHorizontal == n || scoreVertical == n) {
-                win = true;
-            }
+        rows[row] += move;
+        cols[col] += move;
+        if (row == col) {
+            diagonal += move;
         }
-        int scoreToBottomRight = 0, scoreToBottomLeft = 0;
-        for (int i = 0; i < n; i++) {
-            if (board[i][i] == player) {
-                scoreToBottomRight++;
-            }
-            if (board[n - 1 - i][i] == player) {
-                scoreToBottomLeft++;
-            }
+        if ((row + col) == n - 1) {
+            antidiagonal += move;
         }
-        if (scoreToBottomRight == n || scoreToBottomLeft == n) {
+        if (Math.abs(rows[row]) == n || 
+           Math.abs(cols[col]) == n || 
+           Math.abs(diagonal) == n || 
+           Math.abs(antidiagonal) == n) {
             win = true;
         }
-        return win;
+        return win ? player : 0;
     }
-    
 }
+
+
+// [ ][1]
+// [ ][ ]
+
+// [ ][1]
+// [1][2]
 /**
  * Your TicTacToe object will be instantiated and called as such:
  * TicTacToe obj = new TicTacToe(n);
