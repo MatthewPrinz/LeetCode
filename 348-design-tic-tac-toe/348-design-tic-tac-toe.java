@@ -32,13 +32,6 @@ class TicTacToe {
         return win ? player : 0;
     }
 }
-
-
-// [ ][1]
-// [ ][ ]
-
-// [ ][1]
-// [1][2]
 /**
  * Your TicTacToe object will be instantiated and called as such:
  * TicTacToe obj = new TicTacToe(n);
