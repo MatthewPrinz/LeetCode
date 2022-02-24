@@ -3,14 +3,19 @@ class Solution {
         // init variables
         int[] result = new int[length];
         
-        // algorithm
         for (int[] update : updates) {
             int startIndex = update[0];
             int endIndex = update[1];
             int amount = update[2];
-            for (int i = startIndex; i <= endIndex; i++) {
-                result[i] += amount;
+            result[startIndex] += amount;
+            if (endIndex + 1 < length) {
+                result[++endIndex] -= amount;
             }
+        }
+        int sum = 0;
+        for (int i = 0; i < length; i++) {
+            sum += result[i];
+            result[i] = sum;
         }
         return result;
     }
