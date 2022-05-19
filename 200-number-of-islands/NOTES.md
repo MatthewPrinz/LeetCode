@@ -2,6 +2,7 @@ Submitted is a BFS solution. I chose to use a Set to check for duplicates and a 
 * Adding a comma between coordinates in the set (this is so there are no hash collisions - e.g. so (1,90) does not collide with (19, 0))
 * Additionally, I chose to use Strings in the set as the hashcode of an int[] doesn't depend on the contents of the array.
 ​
+​
 This is a much simpler DFS solution.
 ```
 class Solution {
