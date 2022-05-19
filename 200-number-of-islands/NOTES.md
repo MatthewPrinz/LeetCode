@@ -3,6 +3,8 @@ Submitted is a BFS solution. I chose to use a Set to check for duplicates and a 
 * Additionally, I chose to use Strings in the set as the hashcode of an int[] doesn't depend on the contents of the array.
 <br>
 This is a much simpler DFS solution.
+<br>
+​
 ```
 class Solution {
 public int numIslands(char[][] grid) {
