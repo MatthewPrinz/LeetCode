@@ -1,5 +1,10 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
+        /* Time Complexity: 
+        length of strs is n
+        smallest string length is m
+        O(Max(nlogn, m))
+        */
         Arrays.sort(strs);
         String first = strs[0];
         String last = strs[strs.length - 1];
