@@ -3,7 +3,7 @@ object Solution {
         var map: Map[Int, Int] = Map()
         var result: Array[Int] = Array(0, 0)
         for (i <- 0 to nums.length - 1) {
-            map = map + (nums(i) -> i)
+            map += (nums(i) -> i)
         }
         for (i <- 0 to nums.length - 1) {
             if ((map contains (target - nums(i))) && (i != (map get (target - nums(i))).get)) {
