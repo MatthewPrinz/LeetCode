@@ -1,7 +1,6 @@
 class Solution {
     public String multiply(String num1, String num2) {
         StringBuilder finalProduct = new StringBuilder();
-        StringBuilder sb = new StringBuilder();
         int m = num1.length();
         int n = num2.length();
         if ((num1.equals("0") || num2.equals("0"))) {
@@ -18,16 +17,10 @@ class Solution {
             }
         }
         for (int k : result) {
-            sb.append(k);
-        }
-        boolean flag = true; // flag == true if we're removing leading zeroes
-        for (int i = 0; i < sb.toString().length(); i++) {
-            if (sb.toString().charAt(i) == '0' && flag) {
+            if (finalProduct.length() == 0 && k == 0) {
                 continue;
-            } else {
-                flag = false;
-                finalProduct.append(sb.toString().charAt(i));
             }
+            finalProduct.append(k);
         }
         return finalProduct.toString();
     }
