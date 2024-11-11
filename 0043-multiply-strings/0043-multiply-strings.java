@@ -12,6 +12,7 @@ class Solution {
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
                 int product = (num1.charAt(i) -'0') * (num2.charAt(j) -'0');
+                
                 // 1. this is adding the carry over. we look at index i + j + 1 because the carry over from the last 
                 // iteration of the loop was in that iteration's i + j. Since we have subtracted 1 from j in the for loop,
                 // we must add 1 to i + j to retrieve that carry over.
