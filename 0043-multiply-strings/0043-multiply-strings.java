@@ -18,7 +18,8 @@ class Solution {
                 // we must add 1 to i + j to retrieve that carry over.
                 product += helper[i + j + 1]; 
                 
-                // 2. This is where we put carry over
+                // 2. this is the second part of the addition in long multiplication, when you add all the numbers together at 
+                // the end
                 helper[i + j] += product / 10;
                 
                 // 3. when we added the carry over in (1), we added it to the product. so we've been accumulating the 
